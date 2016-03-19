@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://E:/Programming/Projects/UAWebChallenge/AndroidChallenge/UAWebChallenge.iml" filepath="E:/Programming/Projects/UAWebChallenge/AndroidChallenge/UAWebChallenge.iml" />
+      <module fileurl="file://E:/Programming/Projects/UAWebChallenge/AndroidChallenge/app/app.iml" filepath="E:/Programming/Projects/UAWebChallenge/AndroidChallenge/app/app.iml" />
+    </modules>
+  </component>
+</project>
