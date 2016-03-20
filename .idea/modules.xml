@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://E:/Programming/Projects/UAWebChallenge/AndroidChallenge/UAWebChallenge.iml" filepath="E:/Programming/Projects/UAWebChallenge/AndroidChallenge/UAWebChallenge.iml" />
-      <module fileurl="file://E:/Programming/Projects/UAWebChallenge/AndroidChallenge/app/app.iml" filepath="E:/Programming/Projects/UAWebChallenge/AndroidChallenge/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidChallenge.iml" filepath="$PROJECT_DIR$/AndroidChallenge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>

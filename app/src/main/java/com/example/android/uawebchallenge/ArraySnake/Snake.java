@@ -1,6 +1,5 @@
 package com.example.android.uawebchallenge.ArraySnake;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -20,6 +19,9 @@ public class Snake implements Movable {
 
     //It was ArrayList, changed to LinkedList bcz of interview guides ;-D
     LinkedList<SnakePart> parts;
+
+    //Might be bad decision to creating additional object for tracking snake moving, but it`s still better then refilling all game field with 0 and putting snake in ;D
+    SnakePart tail;
     
     public Snake(int startLength, int startDirection){
         this.length = startLength;
@@ -80,24 +82,28 @@ public class Snake implements Movable {
 
     @Override
     public void moveNorth() {
+        tail = parts.getLast();
         parts.removeLast();
         parts.addFirst(new SnakePart(parts.getFirst().getX() - 1,parts.getFirst().getY()));
     }
 
     @Override
     public void moveWest() {
+        tail = parts.getLast();
         parts.removeLast();
         parts.addFirst(new SnakePart(parts.getFirst().getX(),parts.getFirst().getY() + 1));
     }
 
     @Override
     public void moveSouth() {
+        tail = parts.getLast();
         parts.removeLast();
         parts.addFirst(new SnakePart(parts.getFirst().getX() + 1, parts.getFirst().getY()));
     }
 
     @Override
     public void moveEast() {
+        tail = parts.getLast();
         parts.removeLast();
         parts.addFirst(new SnakePart(parts.getFirst().getX(),parts.getFirst().getY() - 1));
     }

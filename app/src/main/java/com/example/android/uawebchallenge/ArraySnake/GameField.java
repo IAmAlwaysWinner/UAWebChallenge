@@ -24,10 +24,9 @@ public class GameField {
         }
     }
 
-    public void lookAtSnake(){
-        for(int i = 0; i < snake.parts.size(); i++){
-            mainGameArray[snake.parts.get(i).getX()][snake.parts.get(i).getY()] = 1;
-        }
+    public void update(){
+        mainGameArray[snake.parts.getFirst().getX()][snake.parts.getFirst().getY()] = 1;
+        mainGameArray[snake.tail.getX()][snake.tail.getY()] = 0;
     }
 
     public Snake getSnake() {

@@ -5,7 +5,6 @@ package com.example.android.uawebchallenge.ArraySnake;
  */
 public class Run {
 
-    int flag = 0;
     public void startGame(){
         //Snake initialization
         Snake snake = new Snake(3,1);
@@ -22,13 +21,14 @@ public class Run {
         gameField.putSnakeIn(snake);
         gameField.showPretty();
 
-        flag +=1;
         System.out.println("_____________________________________________");
-        if(flag == 1) {
             snake = gameField.getSnake();
             snake.moveNorth();
-            gameField.lookAtSnake();
+            gameField.update();
             gameField.showPretty();
-        }
+        System.out.println("_____________________________________________");
+            snake.moveEast();
+            gameField.update();
+            gameField.showPretty();
     }
 }
