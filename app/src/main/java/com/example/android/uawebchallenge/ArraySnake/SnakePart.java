@@ -1,8 +1,5 @@
 package com.example.android.uawebchallenge.ArraySnake;
 
-/**
- * Created by Anton on 19.03.2016.
- */
 public class SnakePart {
     int x;
     int y;

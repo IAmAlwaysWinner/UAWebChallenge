@@ -28,8 +28,4 @@ public class GameField {
         mainGameArray[snake.parts.getFirst().getX()][snake.parts.getFirst().getY()] = 1;
         mainGameArray[snake.tail.getX()][snake.tail.getY()] = 0;
     }
-
-    public Snake getSnake() {
-        return snake;
-    }
 }

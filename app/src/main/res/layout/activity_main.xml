@@ -19,4 +19,36 @@
         android:id="@+id/start_game_button"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="North"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/northButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="South button"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/northButton"
+        android:id="@+id/southButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="East button"
+        android:layout_marginTop="50dp"
+        android:id="@+id/eastButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="West Button"
+        android:id="@+id/westButton"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp"/>
 </RelativeLayout>

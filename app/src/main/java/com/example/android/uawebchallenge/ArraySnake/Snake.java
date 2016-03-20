@@ -2,9 +2,6 @@ package com.example.android.uawebchallenge.ArraySnake;
 
 import java.util.LinkedList;
 
-/**
- * Created by Anton on 19.03.2016.
- */
 public class Snake implements Movable {
     /*
     Snake directions:
@@ -14,13 +11,11 @@ public class Snake implements Movable {
     4 - EAST
      */
 
-    int length;
-    int direction;
+    private int length;
+    private volatile int direction;
 
-    //It was ArrayList, changed to LinkedList bcz of interview guides ;-D
-    LinkedList<SnakePart> parts;
+    public LinkedList<SnakePart> parts;
 
-    //Might be bad decision to creating additional object for tracking snake moving, but it`s still better then refilling all game field with 0 and putting snake in ;D
     SnakePart tail;
     
     public Snake(int startLength, int startDirection){
@@ -28,6 +23,7 @@ public class Snake implements Movable {
         this.direction = startDirection;
         parts = new LinkedList<SnakePart>();
         determineParts(startDirection);
+        tail = parts.getLast();
     }
 
     public void determineParts(int startDirection){
@@ -106,5 +102,13 @@ public class Snake implements Movable {
         tail = parts.getLast();
         parts.removeLast();
         parts.addFirst(new SnakePart(parts.getFirst().getX(),parts.getFirst().getY() - 1));
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
+    public int getDirection() {
+        return direction;
     }
 }
