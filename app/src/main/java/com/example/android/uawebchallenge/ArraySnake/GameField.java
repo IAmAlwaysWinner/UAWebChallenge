@@ -2,9 +2,9 @@ package com.example.android.uawebchallenge.ArraySnake;
 
 import java.util.Arrays;
 
-public class GameField {
-    int[][] mainGameArray;
-    Snake snake;
+    public class GameField {
+    public int[][] mainGameArray;
+    public Snake snake;
 
     public GameField(int[][] gameArray){
         this.mainGameArray = gameArray;
@@ -14,6 +14,7 @@ public class GameField {
         for(int i = 0; i < mainGameArray.length; i++){
             System.out.println(Arrays.toString(mainGameArray[i]));
         }
+        System.out.println("_______________________________________");
     }
 
     public void putSnakeIn(Snake snake){

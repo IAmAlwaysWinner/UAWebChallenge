@@ -27,73 +27,28 @@ public class GameController {
         snakeThread.start();
     }
 
-    public void startGame(){
-        while (snake.parts.getFirst().getX()!=0){
-            switch (snake.getDirection()){
-                case 1:
-                    try {
-                        Thread.currentThread().sleep(gameSpeed);
-                    } catch (InterruptedException e) {
-                        break;
-                    }
-                    moveNorth();
-                    break;
-                case 2:
-                    try {
-                        Thread.currentThread().sleep(gameSpeed);
-                    } catch (InterruptedException e) {
-                        break;
-                    }
-                    moveWest();
-                    break;
-                case 3:
-                    try {
-                        Thread.currentThread().sleep(gameSpeed);
-                    } catch (InterruptedException e) {
-                        break;
-                    }
-                    moveSouth();
-                    break;
-                case 4:
-                    try {
-                        Thread.currentThread().sleep(gameSpeed);
-                    } catch (InterruptedException e) {
-                        break;
-                    }
-                    moveEast();
-                    break;
-                default:
-                    throw new RuntimeException("Wrong direction");
-            }
-        }
-    }
-
 //Should use observer pattern to update gameField array, hope I`ll add it soon.
     public synchronized void moveNorth(){
         snake.moveNorth();
         gameField.update();
         gameField.showPretty();
-        System.out.println("_____________________________________________");
     }
 
     public synchronized void moveWest(){
         snake.moveWest();
         gameField.update();
         gameField.showPretty();
-        System.out.println("_____________________________________________");
     }
 
     public synchronized void moveSouth(){
         snake.moveSouth();
         gameField.update();
         gameField.showPretty();
-        System.out.println("_____________________________________________");
     }
 
     public synchronized void moveEast(){
         snake.moveEast();
         gameField.update();
         gameField.showPretty();
-        System.out.println("_____________________________________________");
     }
 }
