@@ -27,6 +27,19 @@ public class GameController {
         snakeThread.start();
     }
 
+    //4 Variants of lose
+    public boolean checkLose(){
+        if(snake.getDirection() == 1 && snake.parts.getFirst().getX() == 0)
+            return true;
+        if(snake.getDirection() == 3 && snake.parts.getFirst().getX() == gameField.mainGameArray.length-1)
+            return true;
+        if(snake.getDirection() == 4 && snake.parts.getFirst().getY() == 0)
+            return true;
+        if(snake.getDirection() == 2 && snake.parts.getFirst().getY() == gameField.mainGameArray[gameField.mainGameArray.length-1].length-1)
+            return true;
+        return false;
+    }
+
 //Should use observer pattern to update gameField array, hope I`ll add it soon.
     public synchronized void moveNorth(){
         snake.moveNorth();
