@@ -111,4 +111,8 @@ public class Snake implements Movable {
     public int getDirection() {
         return direction;
     }
+
+    public int getLength() {
+        return length;
+    }
 }

@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener setNorthDirection = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            synchronized (gameController.snake) {
+            synchronized (gameController) {
                 gameController.snake.setDirection(1);
-                gameController.snake.notify();
+                gameController.notify();
             }
         }
     };
@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener setWestDirection = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            synchronized (gameController.snake) {
+            synchronized (gameController) {
                 gameController.snake.setDirection(2);
-                gameController.snake.notify();
+                gameController.notify();
             }
         }
     };
@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener setSouthDirection = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            synchronized (gameController.snake) {
+            synchronized (gameController) {
                 gameController.snake.setDirection(3);
-                gameController.snake.notify();
+                gameController.notify();
             }
         }
     };
@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener setEastDirection = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            synchronized (gameController.snake) {
+            synchronized (gameController) {
                 gameController.snake.setDirection(4);
-                gameController.snake.notify();
+                gameController.notify();
             }
         }
     };

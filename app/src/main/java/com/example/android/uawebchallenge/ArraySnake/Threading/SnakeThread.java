@@ -7,17 +7,24 @@ public class SnakeThread extends Thread{
     Thread snakeThread;
     GameController gameController;
 
-    public SnakeThread(GameController gameController,Snake snake){
+    public SnakeThread(GameController gameController){
         snakeThread = new Thread(this, "Main Game Thread");
         this.gameController = gameController;
     }
 
     @Override
     public void run() {
+        int foodFlag = 0;
         while (true){
-            synchronized (gameController.snake){
+            int foodTimes = gameController.foodTime/gameController.gameSpeed;
+            synchronized (gameController){
                 try {
-                    gameController.snake.wait(gameController.gameSpeed);
+                    foodFlag++;
+                    if(foodFlag == foodTimes){
+                        gameController.gameField.putFood();
+                        foodFlag = 0;
+                    }
+                    gameController.wait(gameController.gameSpeed);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

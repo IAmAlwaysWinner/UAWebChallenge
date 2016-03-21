@@ -2,10 +2,13 @@ package com.example.android.uawebchallenge.ArraySnake;
 
 import com.example.android.uawebchallenge.ArraySnake.Threading.SnakeThread;
 
+import javax.xml.datatype.Duration;
+
 public class GameController {
     public volatile Snake snake;
     public GameField gameField;
     public int gameSpeed = 500;
+    public int foodTime = (10000);
 
     public void gameInitialize(){
         //Snake initialization
@@ -23,7 +26,7 @@ public class GameController {
         gameField.putSnakeIn(snake);
         gameField.showPretty();
 
-        SnakeThread snakeThread = new SnakeThread(this,snake);
+        SnakeThread snakeThread = new SnakeThread(this);
         snakeThread.start();
     }
 
@@ -40,7 +43,6 @@ public class GameController {
         return false;
     }
 
-//Should use observer pattern to update gameField array, hope I`ll add it soon.
     public synchronized void moveNorth(){
         snake.moveNorth();
         gameField.update();
