@@ -21,6 +21,9 @@ public class SnakeThread extends Thread{
                 try {
                     foodFlag++;
                     if(foodFlag == foodTimes){
+                        if(gameController.gameField.food != null){
+                            gameController.gameField.takeFoodAway();
+                        }
                         gameController.gameField.putFood();
                         foodFlag = 0;
                     }

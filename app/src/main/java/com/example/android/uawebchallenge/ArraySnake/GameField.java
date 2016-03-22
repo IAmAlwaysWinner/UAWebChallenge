@@ -7,6 +7,7 @@ public class GameField {
     public Snake snake;
     public int fieldHeight;
     public int fieldWidth;
+    public Food food;
 
     public GameField(int[][] gameArray){
         this.mainGameArray = gameArray;
@@ -41,6 +42,7 @@ public class GameField {
             for(int j = 0; j < this.fieldWidth; j++){
                 if(tmpPosition == conditionallyPosition){
                     this.mainGameArray[i][j] = 2;
+                    this.food = new Food(i,j);
                     this.showPretty();
                     return;
                 }
@@ -49,5 +51,10 @@ public class GameField {
                 }
             }
         }
+    }
+
+    public void takeFoodAway(){
+        this.mainGameArray[this.food.getX()][this.food.getY()] = 0;
+        this.food = null;
     }
 }
