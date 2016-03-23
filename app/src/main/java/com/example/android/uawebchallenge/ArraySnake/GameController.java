@@ -12,7 +12,7 @@ public class GameController {
 
     public void gameInitialize(){
         //Snake initialization
-        this.snake = new Snake(3,1);
+        this.snake = initializeSnake();
 
         //Game Field initialization
         int[][] emptyGameArray = new int[18][18];
@@ -111,5 +111,12 @@ public class GameController {
         snake.growEast();
         gameField.update();
         gameField.showPretty();
+    }
+
+    public Snake initializeSnake(){
+        //Direction generation built this way to prevent '0' occurence
+        int direction = (int) Math.ceil(4 * (1 - Math.random()));
+        int snakeStartingLength = 3;
+        return new Snake(snakeStartingLength,direction);
     }
 }
