@@ -43,6 +43,7 @@ public class GameController {
         return false;
     }
 
+    //Duplication of snake methods with console logging(showing) of game
     public synchronized void moveNorth(){
         snake.moveNorth();
         gameField.update();
@@ -63,6 +64,51 @@ public class GameController {
 
     public synchronized void moveEast(){
         snake.moveEast();
+        gameField.update();
+        gameField.showPretty();
+    }
+
+    //It might throw AOoB exception, need to check, also might be used after checkLose method to prevent AOoB exception
+    public synchronized boolean checkIfGrow(){
+        if(snake.getDirection() == 1 && gameField.mainGameArray[snake.parts.getFirst().getX()-1][snake.parts.getFirst().getY()] == 2){
+            return true;
+        }
+
+        if(snake.getDirection() == 2 && gameField.mainGameArray[snake.parts.getFirst().getX()][snake.parts.getFirst().getY()+1] == 2){
+            return true;
+        }
+
+        if(snake.getDirection() == 3 && gameField.mainGameArray[snake.parts.getFirst().getX()+1][snake.parts.getFirst().getY()] == 2){
+            return true;
+        }
+
+        if(snake.getDirection() == 4 && gameField.mainGameArray[snake.parts.getFirst().getX()][snake.parts.getFirst().getY()-1] == 2){
+            return true;
+        }
+
+        return  false;
+    }
+
+    public synchronized void moveNorthWithGrowth(){
+        snake.growNorth();
+        gameField.update();
+        gameField.showPretty();
+    }
+
+    public synchronized void moveWestWithGrowth(){
+        snake.growWest();
+        gameField.update();
+        gameField.showPretty();
+    }
+
+    public synchronized void moveSouthWithGrowth(){
+        snake.growSouth();
+        gameField.update();
+        gameField.showPretty();
+    }
+
+    public synchronized void moveEastWithGrowth(){
+        snake.growEast();
         gameField.update();
         gameField.showPretty();
     }

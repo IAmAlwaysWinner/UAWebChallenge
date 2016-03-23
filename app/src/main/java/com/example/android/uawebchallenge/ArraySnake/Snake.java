@@ -2,7 +2,7 @@ package com.example.android.uawebchallenge.ArraySnake;
 
 import java.util.LinkedList;
 
-public class Snake implements Movable {
+public class Snake implements Movable, Growable {
     /*
     Snake directions:
     1 - NORTH
@@ -115,4 +115,26 @@ public class Snake implements Movable {
     public int getLength() {
         return length;
     }
+
+
+    @Override
+    public void growNorth() {
+        parts.addFirst(new SnakePart(parts.getFirst().getX() - 1,parts.getFirst().getY()));
+    }
+
+    @Override
+    public void growWest() {
+        parts.addFirst(new SnakePart(parts.getFirst().getX(),parts.getFirst().getY() + 1));
+    }
+
+    @Override
+    public void growSouth() {
+        parts.addFirst(new SnakePart(parts.getFirst().getX() + 1, parts.getFirst().getY()));
+    }
+
+    @Override
+    public void growEast() {
+        parts.addFirst(new SnakePart(parts.getFirst().getX(),parts.getFirst().getY() - 1));
+    }
 }
+

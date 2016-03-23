@@ -34,21 +34,40 @@ public class SnakeThread extends Thread{
             }
             if (gameController.checkLose())
                 break;
-            switch (gameController.snake.getDirection()){
-                case 1:
-                    gameController.moveNorth();
-                    break;
-                case 2:
-                    gameController.moveWest();
-                    break;
-                case 3:
-                    gameController.moveSouth();
-                    break;
-                case 4:
-                    gameController.moveEast();
-                    break;
-                default:
-                    throw new RuntimeException("Wrong direction");
+            if(gameController.checkIfGrow()){
+                switch (gameController.snake.getDirection()) {
+                    case 1:
+                        gameController.moveNorthWithGrowth();
+                        break;
+                    case 2:
+                        gameController.moveWestWithGrowth();
+                        break;
+                    case 3:
+                        gameController.moveSouthWithGrowth();
+                        break;
+                    case 4:
+                        gameController.moveEastWithGrowth();
+                        break;
+                    default:
+                        throw new RuntimeException("Wrong direction");
+                }
+            } else {
+                switch (gameController.snake.getDirection()) {
+                    case 1:
+                        gameController.moveNorth();
+                        break;
+                    case 2:
+                        gameController.moveWest();
+                        break;
+                    case 3:
+                        gameController.moveSouth();
+                        break;
+                    case 4:
+                        gameController.moveEast();
+                        break;
+                    default:
+                        throw new RuntimeException("Wrong direction");
+                }
             }
         }
     }
