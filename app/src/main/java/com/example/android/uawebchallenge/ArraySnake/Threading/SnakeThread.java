@@ -1,7 +1,10 @@
 package com.example.android.uawebchallenge.ArraySnake.Threading;
 
+import android.content.Context;
+
 import com.example.android.uawebchallenge.ArraySnake.GameController;
 import com.example.android.uawebchallenge.ArraySnake.Snake;
+import com.example.android.uawebchallenge.MainActivity;
 
 public class SnakeThread extends Thread{
     Thread snakeThread;
@@ -32,8 +35,9 @@ public class SnakeThread extends Thread{
                     e.printStackTrace();
                 }
             }
-            if (gameController.checkLose())
-                break;
+            if (gameController.checkLose()) {
+                break;  
+            }
             if(gameController.checkIfGrow()){
                 switch (gameController.snake.getDirection()) {
                     case 1:

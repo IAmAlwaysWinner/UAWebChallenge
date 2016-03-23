@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.android.uawebchallenge.ArraySnake.GameController;
-import com.example.android.uawebchallenge.ArraySnake.GameField;
-import com.example.android.uawebchallenge.ArraySnake.Snake;
-import com.example.android.uawebchallenge.ArraySnake.Threading.SnakeThread;
+
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        Button button = (Button) findViewById(R.id.start_game_button);
-        button.setOnClickListener(startGameClickListener);
+        Button startButton = (Button) findViewById(R.id.startButton);
+        startButton.setOnClickListener(startGameClickListener);
 
 
         Button northButton = (Button) findViewById(R.id.northButton);
@@ -34,12 +35,14 @@ public class MainActivity extends AppCompatActivity {
         westButton.setOnClickListener(setWestDirection);
         southButton.setOnClickListener(setSouthDirection);
         eastButton.setOnClickListener(setEastDirection);
+
     }
 
     View.OnClickListener startGameClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            gameController.gameInitialize();
+            gameController.gameInitialize(MainActivity.this);
+            Button startButton = (Button) findViewById(R.id.startButton);
         }
     };
 
@@ -48,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             synchronized (gameController) {
                 gameController.snake.setDirection(1);
-                gameController.notify();
             }
         }
     };
@@ -58,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             synchronized (gameController) {
                 gameController.snake.setDirection(2);
-                gameController.notify();
             }
         }
     };
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             synchronized (gameController) {
                 gameController.snake.setDirection(3);
-                gameController.notify();
+
             }
         }
     };
@@ -78,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             synchronized (gameController) {
                 gameController.snake.setDirection(4);
-                gameController.notify();
             }
         }
     };

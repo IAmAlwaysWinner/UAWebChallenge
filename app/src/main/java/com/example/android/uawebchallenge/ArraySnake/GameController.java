@@ -1,6 +1,12 @@
 package com.example.android.uawebchallenge.ArraySnake;
 
+import android.content.Context;
+import android.text.Layout;
+import android.view.View;
+
 import com.example.android.uawebchallenge.ArraySnake.Threading.SnakeThread;
+import com.example.android.uawebchallenge.MainActivity;
+import com.example.android.uawebchallenge.R;
 
 import javax.xml.datatype.Duration;
 
@@ -9,28 +15,24 @@ public class GameController {
     public GameField gameField;
     public int gameSpeed = 500;
     public int foodTime = (10000);
+    public MainActivity mainActivity;
 
-    public void gameInitialize(){
+    public void gameInitialize(MainActivity mainActivity){
+        this.mainActivity = mainActivity;
         //Snake initialization
         this.snake = initializeSnake();
 
         //Game Field initialization
-        int[][] emptyGameArray = new int[18][18];
-        for (int i = 0; i < 18; i++) {
-            for (int j = 0; j < 18; j++) {
-                emptyGameArray[i][j] = 0;
-            }
-        }
-
-        gameField = new GameField(emptyGameArray);
+        gameField = initializeGameField(18,18);
         gameField.putSnakeIn(snake);
         gameField.showPretty();
 
+        //Creating and starting main game thread
         SnakeThread snakeThread = new SnakeThread(this);
         snakeThread.start();
     }
 
-    //4 Variants of lose
+    //This method checks for 4 Variants of lose
     public boolean checkLose(){
         if(snake.getDirection() == 1 && snake.parts.getFirst().getX() == 0)
             return true;
@@ -43,7 +45,7 @@ public class GameController {
         return false;
     }
 
-    //Duplication of snake methods with console logging(showing) of game
+    //Methods for move of snake
     public synchronized void moveNorth(){
         snake.moveNorth();
         gameField.update();
@@ -89,6 +91,7 @@ public class GameController {
         return  false;
     }
 
+    //Methods for growth of snake
     public synchronized void moveNorthWithGrowth(){
         snake.growNorth();
         gameField.update();
@@ -113,10 +116,27 @@ public class GameController {
         gameField.showPretty();
     }
 
+    //Snake initialization (hard coded value of length)
     public Snake initializeSnake(){
         //Direction generation built this way to prevent '0' occurence
         int direction = (int) Math.ceil(4 * (1 - Math.random()));
         int snakeStartingLength = 3;
         return new Snake(snakeStartingLength,direction);
     }
+
+    //Game field initialization
+    public GameField initializeGameField(int height, int width){
+        int[][] emptyGameArray = new int[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                emptyGameArray[i][j] = 0;
+            }
+        }
+        return new GameField(emptyGameArray);
+    }
+
+    public void showLoseMessage(){
+        mainActivity.findViewById(R.id.loseTextView).setVisibility(View.VISIBLE);
+    }
+
 }

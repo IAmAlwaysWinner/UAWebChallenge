@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="symbol_size">22sp</dimen>
+    <dimen name="start_game_bottom_margin">16dp</dimen>
 </resources>

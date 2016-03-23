@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">UAWebChallenge</string>
     <string name="start_game">Start game</string>
+    <string name="lose_message">You Lose</string>
 </resources>
