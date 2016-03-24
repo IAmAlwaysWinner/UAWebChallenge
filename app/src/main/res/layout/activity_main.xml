@@ -3,14 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.uawebchallenge.MainActivity">
+    tools:context="com.example.android.uawebchallenge.MainActivity"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/main_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/symbol_size"
-        android:text=""/>
+        android:typeface="monospace"
+        android:text=""
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/white"/>
+
+    <TextView
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/lose_message"
+        android:id="@+id/loseTextView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -21,45 +36,49 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/start_game_bottom_margin"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="North"
-        android:layout_alignParentTop="true"
+    Button
+        android:layout_width="@dimen/buttons_dimens"
+        android:layout_height="@dimen/buttons_dimens"
+        android:text="North zone"
+        android:layout_marginBottom="50dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/northButton" />
+        android:id="@+id/northButton"
+        android:layout_above="@id/loseTextView"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="South button"
+    Button
+        android:layout_width="@dimen/buttons_dimens"
+        android:layout_height="@dimen/buttons_dimens"
+        android:text="South zone"
         android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/northButton"
+        android:layout_below="@id/loseTextView"
         android:id="@+id/southButton" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="East button"
-        android:layout_marginTop="50dp"
+    Button
+        android:layout_width="@dimen/buttons_dimens"
+        android:layout_height="@dimen/buttons_dimens"
+        android:text="East zone"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/loseTextView"
+        android:layout_centerVertical="true"
         android:id="@+id/eastButton" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="West Button"
+    Button
+        android:layout_width="@dimen/buttons_dimens"
+        android:layout_height="@dimen/buttons_dimens"
+        android:text="West zone"
         android:id="@+id/westButton"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="50dp"/>
+        android:layout_toRightOf="@id/loseTextView"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"/>
+
+
 
     <TextView
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/lose_message"
-        android:id="@+id/loseTextView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="@dimen/symbol_size"
+        android:typeface="monospace"
+        android:text="A"
+        android:id="@+id/testTextView" />
 </RelativeLayout>

@@ -18,45 +18,45 @@ public class Snake implements Movable, Growable {
 
     SnakePart tail;
     
-    public Snake(int startLength, int startDirection){
+    public Snake(int startLength, int startDirection, int fieldHeight, int fieldWidth){
         this.length = startLength;
         this.direction = startDirection;
         parts = new LinkedList<SnakePart>();
-        determineParts(startDirection);
+        determineParts(startDirection,fieldHeight,fieldWidth);
         tail = parts.getLast();
     }
 
-    public void determineParts(int startDirection){
+    public void determineParts(int startDirection, int fieldHeight, int fieldWidth){
         SnakePart[] snakeParts = new SnakePart[3];
         switch (startDirection){
             case 1:
-                snakeParts[0] = new SnakePart(7,9);
-                snakeParts[1] = new SnakePart(8,9);
-                snakeParts[2] = new SnakePart(9,9);
+                snakeParts[0] = new SnakePart(fieldHeight/2 - 2,fieldWidth/2);
+                snakeParts[1] = new SnakePart(fieldHeight/2 - 1,fieldWidth/2);
+                snakeParts[2] = new SnakePart(fieldHeight/2 ,fieldWidth/2);
                 for (int i = 0; i < 3 ; i++){
                     parts.add(snakeParts[i]);
                 }
                 break;
             case 2:
-                snakeParts[0] = new SnakePart(9,11);
-                snakeParts[1] = new SnakePart(9,10);
-                snakeParts[2] = new SnakePart(9,9);
+                snakeParts[0] = new SnakePart(fieldHeight/2,fieldWidth/2 + 2);
+                snakeParts[1] = new SnakePart(fieldHeight/2,fieldWidth/2 + 1);
+                snakeParts[2] = new SnakePart(fieldHeight/2,fieldWidth/2);
                 for (int i = 0; i < 3 ; i++){
                     parts.add(i, snakeParts[i]);
                 }
                 break;
             case 3:
-                snakeParts[0] = new SnakePart(11,9);
-                snakeParts[1] = new SnakePart(10,9);
-                snakeParts[2] = new SnakePart(9,9);
+                snakeParts[0] = new SnakePart(fieldHeight/2 + 2,fieldWidth/2);
+                snakeParts[1] = new SnakePart(fieldHeight/2 + 1,fieldWidth/2);
+                snakeParts[2] = new SnakePart(fieldHeight/2,fieldWidth/2);
                 for (int i = 0; i < 3 ; i++){
                     parts.add(i, snakeParts[i]);
                 }
                 break;
             case 4:
-                snakeParts[0] = new SnakePart(9,7);
-                snakeParts[1] = new SnakePart(9,8);
-                snakeParts[2] = new SnakePart(9,9);
+                snakeParts[0] = new SnakePart(fieldHeight/2,fieldWidth/2 - 2);
+                snakeParts[1] = new SnakePart(fieldHeight/2,fieldWidth/2 - 1);
+                snakeParts[2] = new SnakePart(fieldHeight/2,fieldWidth/2);
                 for (int i = 0; i < 3 ; i++){
                     parts.add(i, snakeParts[i]);
                 }

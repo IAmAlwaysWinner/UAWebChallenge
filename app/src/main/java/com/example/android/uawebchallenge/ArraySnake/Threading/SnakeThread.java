@@ -1,6 +1,7 @@
 package com.example.android.uawebchallenge.ArraySnake.Threading;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
@@ -41,22 +42,30 @@ public class SnakeThread extends Thread{
                 }
             }
             if (gameController.checkLose()) {
-                accessToUI.sendEmptyMessage(0);
+                Bundle bundle = new Bundle();
+                bundle.putInt("do", 2);
+                Message msg = new Message();
+                msg.setData(bundle);
+                accessToUI.sendMessage(msg);
                 break;  
             }
             if(gameController.checkIfGrow()){
                 switch (gameController.snake.getDirection()) {
                     case 1:
                         gameController.moveNorthWithGrowth();
+                        show();
                         break;
                     case 2:
                         gameController.moveWestWithGrowth();
+                        show();
                         break;
                     case 3:
                         gameController.moveSouthWithGrowth();
+                        show();
                         break;
                     case 4:
                         gameController.moveEastWithGrowth();
+                        show();
                         break;
                     default:
                         throw new RuntimeException("Wrong direction");
@@ -65,20 +74,32 @@ public class SnakeThread extends Thread{
                 switch (gameController.snake.getDirection()) {
                     case 1:
                         gameController.moveNorth();
+                        show();
                         break;
                     case 2:
                         gameController.moveWest();
+                        show();
                         break;
                     case 3:
                         gameController.moveSouth();
+                        show();
                         break;
                     case 4:
                         gameController.moveEast();
+                        show();
                         break;
                     default:
                         throw new RuntimeException("Wrong direction");
                 }
             }
         }
+    }
+
+    void show(){
+        Bundle bundle = new Bundle();
+        bundle.putInt("do", 1);
+        Message msg = new Message();
+        msg.setData(bundle);
+        accessToUI.sendMessage(msg);
     }
 }

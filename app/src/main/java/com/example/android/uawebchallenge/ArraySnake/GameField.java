@@ -22,7 +22,6 @@ public class GameField {
                 System.out.print(mainGameArray[i][k]);
             }
             System.out.println();
-//            System.out.println(Arrays.toString(mainGameArray[i]));
         }
         System.out.println("_______________________________________");
     }
