@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             gameController.gameInitialize(MainActivity.this);
             Button startButton = (Button) findViewById(R.id.startButton);
+            TextView loseTextView = (TextView) findViewById(R.id.loseTextView);
+            loseTextView.setVisibility(View.INVISIBLE);
+            startButton.setVisibility(View.INVISIBLE);
+            startButton.setClickable(false);
         }
     };
 

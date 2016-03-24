@@ -1,8 +1,12 @@
 package com.example.android.uawebchallenge.ArraySnake;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Layout;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.android.uawebchallenge.ArraySnake.Threading.SnakeThread;
 import com.example.android.uawebchallenge.MainActivity;
@@ -17,7 +21,18 @@ public class GameController {
     public int foodTime = (10000);
     public MainActivity mainActivity;
 
-    public void gameInitialize(MainActivity mainActivity){
+    public void gameInitialize(final MainActivity mainActivity){
+        //I dont even know how to justify myself for this handler
+        Handler accessToUI = new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                TextView loseTextView = (TextView) mainActivity.findViewById(R.id.loseTextView);
+                loseTextView.setVisibility(View.VISIBLE);
+                Button startButton = (Button) mainActivity.findViewById(R.id.startButton);
+                startButton.setVisibility(View.VISIBLE);
+                startButton.setClickable(true);
+            }
+        };
         this.mainActivity = mainActivity;
         //Snake initialization
         this.snake = initializeSnake();
@@ -28,8 +43,8 @@ public class GameController {
         gameField.showPretty();
 
         //Creating and starting main game thread
-        SnakeThread snakeThread = new SnakeThread(this);
-        snakeThread.start();
+        SnakeThread snakeThread = new SnakeThread(this,accessToUI);
+            snakeThread.start();
     }
 
     //This method checks for 4 Variants of lose

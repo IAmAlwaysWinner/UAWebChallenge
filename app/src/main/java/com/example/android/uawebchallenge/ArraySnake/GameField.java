@@ -17,7 +17,12 @@ public class GameField {
 
     public void showPretty(){
         for(int i = 0; i < mainGameArray.length; i++){
-            System.out.println(Arrays.toString(mainGameArray[i]));
+            for (int k = 0; k < mainGameArray[i].length; ++k)
+            {
+                System.out.print(mainGameArray[i][k]);
+            }
+            System.out.println();
+//            System.out.println(Arrays.toString(mainGameArray[i]));
         }
         System.out.println("_______________________________________");
     }

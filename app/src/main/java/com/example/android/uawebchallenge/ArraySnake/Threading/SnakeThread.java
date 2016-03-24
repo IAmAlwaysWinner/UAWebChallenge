@@ -1,18 +1,23 @@
 package com.example.android.uawebchallenge.ArraySnake.Threading;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 
 import com.example.android.uawebchallenge.ArraySnake.GameController;
 import com.example.android.uawebchallenge.ArraySnake.Snake;
 import com.example.android.uawebchallenge.MainActivity;
 
+
 public class SnakeThread extends Thread{
     Thread snakeThread;
     GameController gameController;
+    Handler accessToUI;
 
-    public SnakeThread(GameController gameController){
+    public SnakeThread(GameController gameController, Handler accessToUI){
         snakeThread = new Thread(this, "Main Game Thread");
         this.gameController = gameController;
+        this.accessToUI = accessToUI;
     }
 
     @Override
@@ -36,6 +41,7 @@ public class SnakeThread extends Thread{
                 }
             }
             if (gameController.checkLose()) {
+                accessToUI.sendEmptyMessage(0);
                 break;  
             }
             if(gameController.checkIfGrow()){
